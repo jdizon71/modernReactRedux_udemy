@@ -2,6 +2,7 @@
 ## An Intro to React
 
 ### Environment Setup
+
 ```
 $ git clone https://github.com/StephenGrider/ReduxSimpleStarter.git
 
@@ -22,6 +23,7 @@ $ npm start // Starts boilerplate package and runs a local server
 ```
 <script src="/bundle.js"></script>
 ```
+
   * The `bundle.js` file is the *compiled JavaScript* for the entire application
   * If you look in the `src` directory of the project application, you'll find a bunch of JavaScript files
     * **Webpack** and **Babel** take all those files, *compile* them into a single JS files, and make that compiled code available as `bundle.js`
@@ -38,6 +40,7 @@ const App = function() {
   return <div>Hi!</div>;
 }
 ```
+
   * `const` - ES6 syntax to declare a **constant** variable
   * The `<div>Hi!</div>` is referred to as **JSX**
     * **JSX** is a subset, or dialect, of JavaScript that allows us to write HTML inside of JavaScript code
@@ -49,3 +52,41 @@ const App = function() {
 * **JSX**, like ES6, cannot be *interpretted* by the browser
 * We use JSX because it produces the actual HTML that gets inserted into the Dom when we *render* the component
 * JSX can also be nested inside of itself like normal HTML
+
+### Differences Between Component Instances and Component Classes
+
+* When we create a component, we are creating a **class** of a component; a *type* of a component
+  * `App` is a *type of component*
+    * We can ultimately have many different *instances* of the `App` component
+    * You can think of it as a factory, or blueprint, to create many different instances of that specific component that gets rendered to the DOM
+    * **SUMMARY:** Components must be **instantiated** before getting rendered to the DOM
+
+* When we write a JSX tag, i.e. `<tagName> </tagName>` or `<tagName />`, it will actually call `React.createElement()` for us
+  * So whenever we write JSX, and we put the component name, the component name is a *component class*, but using it inside JSX makes it a *component instance*
+
+**Component Class**
+
+  ```
+  const App = function() {
+    return <div>Hi!</div>;
+  }
+  ```
+
+**Component Instance**
+
+```
+<App></App>
+
+// or
+
+<App />
+```
+
+### Render Targets
+
+```
+ReactDOM.render(<App />, document.querySelector(".container"));
+```
+  * The `ReactDOM.render(newElement, existingHTMLNode)` takes 2 arguments:
+    1. The `newElement` you want to render to the DOM
+    2. An `existingHTMLNode` you want to insert the newElement into
