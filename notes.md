@@ -115,3 +115,18 @@ ReactDOM.render(<App />, document.querySelector(".container"));
 ```
 $ npm install --save youtube-api-search
 ```
+
+### Export Statements
+
+* You need to put `import React from 'react';` inside every component that will render JSX
+
+```
+export default SearchBar;
+```
+
+  * If we want to make our components available for other components to `import`, we need to `export` them
+  * Also, if we want to `import` files that we write, we must include the *relative path* in the `import` statement
+
+```
+import SearchBar from './components/searchBar';
+```
