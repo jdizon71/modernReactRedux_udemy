@@ -90,3 +90,21 @@ ReactDOM.render(<App />, document.querySelector(".container"));
   * The `ReactDOM.render(newElement, existingHTMLNode)` takes 2 arguments:
     1. The `newElement` you want to render to the DOM
     2. An `existingHTMLNode` you want to insert the newElement into
+
+
+### Component Structure
+
+* A React application is made of up different components
+* Each component is a JavaScript function or object that returns some amount of HTML
+* Ultimately, we will create different components for different functions/purposes of our application
+* React knows how to render many different components on the screen at one time and it does it very fast
+
+* Specifically for our application, a *YouTube clone*, we will create different components for:
+  * Search Bar
+  * Video Player/Title/Description
+  * List of Video Previews
+  * Video Previews with Title // *We will create many instances of these and insert them into our List of Video Previews*
+  * One, big component that will contain all of our smaller components // *This will be our App - index.js - component*
+
+* *By building small components, we can easily resuse code throughout the entire application*
+* **NOTE:** We want to create make **one component per file**
