@@ -87,6 +87,7 @@ const App = function() {
 ```
 ReactDOM.render(<App />, document.querySelector(".container"));
 ```
+
   * The `ReactDOM.render(newElement, existingHTMLNode)` takes 2 arguments:
     1. The `newElement` you want to render to the DOM
     2. An `existingHTMLNode` you want to insert the newElement into
@@ -108,3 +109,9 @@ ReactDOM.render(<App />, document.querySelector(".container"));
 
 * *By building small components, we can easily resuse code throughout the entire application*
 * **NOTE:** We want to create make **one component per file**
+
+### YouTube Search API Setup
+
+```
+$ npm install --save youtube-api-search
+```
