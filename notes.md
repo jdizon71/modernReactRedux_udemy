@@ -139,7 +139,7 @@ import SearchBar from './components/searchBar';
 ```
 const SearchBar = () => { // functional component syntax
   return <input />;
-}; 
+};
 ```
 
 * We can also create *class components*
@@ -198,3 +198,37 @@ render() {
   return <input onChange = { event => console.log(event.target.value) } // with single arguments, you don't need to use parens
 }
 ```
+
+### Introduction to State
+
+* **State** is a plain JavaScript object that is used to record and react to user events
+* Each *class-based component* we define has its own state object
+  * Whenever a component's state is changed, the component immediately re-renders and also forces all of its children to re-render as well
+  * *NOTE:* Functional components DO NOT have state; only class-based components can have state
+
+* Before we can use state inside of a component, we need to **initialize the state object**
+* All JavaScript classes have a special function called `constructor()`
+  * The `constructor()` is the *first and only* function called automatically whenever a new instance of the class is created
+  * It is reserved for doing some setup inside of the class; such as: initializing variables, initializing state, etc.  
+  * `super(props)` - Because `SearchBar extends Component`, `Component` has its own `constructor()`
+    * Whenever we want to define a method that is already defined within a parent class, we can call that parent method on the parent class by calling `super()`
+
+```
+this.state = { term: '' };
+```
+
+  * To *initialize state*:
+    1. Create a new object `{}`
+    2. The object will also contain properties that we want to record on the state
+      * In our example, `term` refers to *search term*; i.e. the user searches for `funny cat videos`
+    3. Assign the new object to `this.state`
+
+### More on State
+
+* `this.state` - only used within the `constructor()`
+  * To **manipulate** state anywhere else, we'll use `this.setState()`
+    * We pass this method an object that contains the new state we want to have/give to our component
+    * By using `this.setState()`, we are able to maintain continuity
+      * Behind the scenes, React does a lot of handling with the State object
+      * If we change the value with `this.state.term`; React won't know that the state has changed
+      * If you simply want to **reference** state, you can use `this.state.term`
