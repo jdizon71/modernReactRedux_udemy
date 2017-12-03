@@ -130,3 +130,32 @@ export default SearchBar;
 ```
 import SearchBar from './components/searchBar';
 ```
+
+### Class-based Components
+
+* So far, we've been creating *functional components*
+  * They have been components created using functions
+
+* We can also create *class components*
+  * Used whenever we want a component to have some internal record-keeping
+  * Has the ability to be more self-aware and what's happened since it's been rendered
+    * i.e. - Our `SearchBar` component needs to be aware when a user has typed something inside of it and what the user typed
+
+* To create a class-based component, we use ES6 classes
+  * ES6 classes are JavaScript objects that have properties and methods  
+
+* Every class-based component we create must have a defined `render()` to return JSX
+* `extends` allows our class-based components to *inherit* additional functionality from other classes
+
+*Syntactic Sugar Below*
+
+```
+import React from 'react';
+class SearchBar extends React.Component {}
+
+// By using ES6 syntax, we can instead just write
+
+import React, { Component } from 'react';
+class SearchBar extends Component {}
+
+```
