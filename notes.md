@@ -136,6 +136,12 @@ import SearchBar from './components/searchBar';
 * So far, we've been creating *functional components*
   * They have been components created using functions
 
+```
+const SearchBar = () => { // functional component syntax
+  return <input />;
+}; 
+```
+
 * We can also create *class components*
   * Used whenever we want a component to have some internal record-keeping
   * Has the ability to be more self-aware and what's happened since it's been rendered
@@ -158,4 +164,37 @@ class SearchBar extends React.Component {}
 import React, { Component } from 'react';
 class SearchBar extends Component {}
 
+```
+
+### Handling User Events
+
+* Handling *events* in React is a two-step process:
+  1. Declare an *event handler*; the event handler should be a function that is called whenever the event occurs
+    * `onInputChange()` is defined within `SearchBar` component and its purpose is to monitor user input
+  2. We pass the event handler to the element that we want to monitor for events
+    * `return <input onChange = { this.onInputChange } />;`
+      * *NOTE:* Whenever we are writing JSX and we use JavaScript variables, we wrap it with curly braces
+
+* All HTML `input` elements *emit a change event* whenever a user interacts with them by typing something in
+  * `onChange` comes from the Browser; it's vanilla HTML
+
+* All browser events that get triggered by native elements -i.e. `input`, `div`, `span`, `button`, etc. - get stored in the `event` object whenever we use an event handler
+  * You can name it anything you want, it doesn't have to be `event`
+
+*Syntactic Sugar Below*
+
+```
+  render() {
+    return <input onChange = { this.onInputChange } />;
+  }
+
+  onInputChange(event) {
+    console.log(event.target.value);
+  }
+
+// By using ES6 syntax, we can instead just write
+
+render() {
+  return <input onChange = { event => console.log(event.target.value) } // with single arguments, you don't need to use parens
+}
 ```
