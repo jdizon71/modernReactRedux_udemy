@@ -338,3 +338,7 @@ const VideoList = (props) => {
 ```
 
 **NOTE:** - In a *functional component*, the `props` object is an argument; in a *class-based component*, props are available anywhere via `this.props`
+
+### Building Lists with Map
+
+* Instead of using the basic JavaScript `for` loop, it's best to use *enumerables*; such as `map`, `filter`, `reduce`, etc.
