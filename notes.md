@@ -351,3 +351,14 @@ const VideoList = (props) => {
 ```
 return <VideoListItem  key={ video.etag } video={ video } />
 ```
+
+### Video List Items
+
+```
+const VideoListItem = (props) => {
+const video = props.video;
+
+// ES6 syntax
+
+const VideoListItem = ({ video }) => {
+```
