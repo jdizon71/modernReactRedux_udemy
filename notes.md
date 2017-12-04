@@ -342,3 +342,12 @@ const VideoList = (props) => {
 ### Building Lists with Map
 
 * Instead of using the basic JavaScript `for` loop, it's best to use *enumerables*; such as `map`, `filter`, `reduce`, etc.
+
+### List Item Keys
+
+* If we look closer into the response data that we get back for each video, we can see that every video has an `etag` property
+  * We can use this as a *unique identifier* and pass this with every `videoListItem`
+
+```
+return <VideoListItem  key={ video.etag } video={ video } />
+```
