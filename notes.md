@@ -232,3 +232,33 @@ this.state = { term: '' };
       * Behind the scenes, React does a lot of handling with the State object
       * If we change the value with `this.state.term`; React won't know that the state has changed
       * If you simply want to **reference** state, you can use `this.state.term`
+
+### Controlled Components
+
+* A **controlled field** is a *form element*, like an `input` whose value is set by the state; instead of the other way around
+  * Right now, the user input *tells* the state what it should be. Whenever the input changes, it tells the state it needs to change also
+  * It should actually be the other way around; the state should tell the input what the current value should be
+
+*Controlled Component*
+
+```
+<input
+  value = { this.state.term }
+  onChange = { event => this.setState({ term: event.target.value }) } />
+```
+  * `input` is now a *controlled component* or a *controlled form element*
+    * Its `value` is set by `state`; so its value only changes when the state changes
+
+*How does is this actually working?*
+  1. First, the app starts up and renders an instance of `SearchBar`
+  2. Since a new instance of `SearchBar` is created, its `constructor()` is invoked
+    * `this.state.term = ''`
+  3. The component renders, via the `render()`
+  4. `value` is, initially, an empty string; `value = { this.state.term }`
+  5. The component waits for some user input to invoke the event handler
+  6. When the user does enter some text, the `state` is updated; `this.setState({ term: event.target.value })`
+    * At this point, the value of `input` HAS NOT CHANGED *this is the main key-point*
+  7. Whenever `setState()` is called, the **component immediately re-renders***
+  8. So, when the `render()` is invoked again, `value` gets updated to equal the current value of `this.state.term`
+
+* In terms of React, this is the proper way to treat data
