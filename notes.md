@@ -272,3 +272,47 @@ this.state = { term: '' };
 ```
 YTSearch({ key: API_KEY, term: 'boosted board' }, (data) => console.log(data) );
 ```
+
+### Refactoring Functional Components to Class Components
+
+**Functional Component**
+
+```
+const App = () => { 
+  return (
+    <div>
+      <SearchBar />
+    </div>
+  );
+};
+```
+
+**Class-based Component**
+
+```
+class App extends Component { // ES6 syntax replaces `function` keyword with fat arrow
+  constructor(props) {
+    super(props)
+
+    this.state = { videos: [] }
+
+    YTSearch({ key: API_KEY, term: 'boosted board' }, (videos) => { // `video` is arbitrary; you can whatever variable name you want
+      this.setState({ videos });
+      });
+    }
+
+    render() {
+      return ( // For multiline JSX, it's best, but not required to use () to encapsulate the entire expression
+      <div>
+      <SearchBar />
+      </div>
+      );
+    }
+  };
+  ```
+
+* In ES6, if both key/value are the same variable name, you can simply write the variable name once
+
+```
+this.setState({ videos });
+```
