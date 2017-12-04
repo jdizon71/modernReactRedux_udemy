@@ -246,6 +246,7 @@ this.state = { term: '' };
   value = { this.state.term }
   onChange = { event => this.setState({ term: event.target.value }) } />
 ```
+
   * `input` is now a *controlled component* or a *controlled form element*
     * Its `value` is set by `state`; so its value only changes when the state changes
 
@@ -278,7 +279,7 @@ YTSearch({ key: API_KEY, term: 'boosted board' }, (data) => console.log(data) );
 **Functional Component**
 
 ```
-const App = () => { 
+const App = () => {
   return (
     <div>
       <SearchBar />
@@ -309,10 +310,31 @@ class App extends Component { // ES6 syntax replaces `function` keyword with fat
       );
     }
   };
-  ```
+```
 
 * In ES6, if both key/value are the same variable name, you can simply write the variable name once
 
 ```
 this.setState({ videos });
 ```
+
+### Props
+
+* Passing data between a parent-component and a child-component is referred to as *passing props* in React
+  * The *data* that is passed between the parent-component and the child component is referred to as **props**
+
+```
+<VideoList videos={ this.state.videos } />
+```
+
+  * In this example, `videos` is the prop
+  * Anytime `App` re-renders, like when we set `state` in the component, `VideoList` will get the new list of `videos` as well
+
+* When using a *functional component*, the `props` object will arrive to the component as an *argument*
+
+```
+const VideoList = (props) => {
+  const videos = props.videos; // example how to access the videos from the `props` object
+```
+
+**NOTE:** - In a *functional component*, the `props` object is an argument; in a *class-based component*, props are available anywhere via `this.props`
