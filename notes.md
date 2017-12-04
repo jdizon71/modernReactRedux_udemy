@@ -262,3 +262,13 @@ this.state = { term: '' };
   8. So, when the `render()` is invoked again, `value` gets updated to equal the current value of `this.state.term`
 
 * In terms of React, this is the proper way to treat data
+
+## Ajax Requests with React
+### YouTube Search Response
+
+* **Downwards Data Flow** - only the *most-parent* component should be responsible to fetch data; either from an API, Redux, etc.
+  * Right now, `App` is the most-parent component that we have; so this is the component that should fetch the data from the YouTube API
+
+```
+YTSearch({ key: API_KEY, term: 'boosted board' }, (data) => console.log(data) );
+```
