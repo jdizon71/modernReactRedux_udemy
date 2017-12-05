@@ -362,3 +362,14 @@ const video = props.video;
 
 const VideoListItem = ({ video }) => {
 ```
+
+### Video Selection
+
+* To allow the user the ability to *click* on a video, we're going to use the concept of a *selcted video* to the `App` component's `state`
+* The selected video will be a `video` object and it will always be passed into `VideoDetail`
+  * Instead of `this.state.video`, we would be able to write `this.state.selectedVideo`
+* To update `selectedVideo`, we'll *pass* a callback - `onVideoSelect()` - from `App` to `VideoList`, then from `VideoList` to `VideoListItem`
+  * Whenever the `VideoListItem` is clicked, it will *run* the callback with the `video` that belongs to it
+
+* Passing callbacks between parent/child components is great for small communication between the two components
+  * It is rare to go more than 2 levels deep when passing callbacks
