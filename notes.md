@@ -373,3 +373,10 @@ const VideoListItem = ({ video }) => {
 
 * Passing callbacks between parent/child components is great for small communication between the two components
   * It is rare to go more than 2 levels deep when passing callbacks
+
+### Searching for Videos
+
+* We're going to take a similar approach for hooking up the `searchBar` as we did with `selectedVideo`
+* We will *pass* a callback, `videoSearch`, from the `App` component down to the `searchBar` component
+  * The callback will take a `searchTerm`, which will be a string, and make a new `YTSearch` request
+    * When we get a response, it will update the `state` with the new list of videos
