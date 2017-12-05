@@ -390,3 +390,13 @@ const VideoListItem = ({ video }) => {
 ```
 $ npm install --save lodash
 ```
+
+### Summary
+
+* Class-based components vs Functional Components
+* State
+  * Whenever a change is made to `state`, the component automatically re-renders along any children the component contains as well
+  * As this was a *React-only* application, we have been dealing with *component-level state*
+    * Both `App` and `SearchBar` both had their own, separate `state`
+    * When we start working with Redux, we will be working with *application-level state*
+* Using callbacks to manipulate data
