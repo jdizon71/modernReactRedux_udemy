@@ -380,3 +380,13 @@ const VideoListItem = ({ video }) => {
 * We will *pass* a callback, `videoSearch`, from the `App` component down to the `searchBar` component
   * The callback will take a `searchTerm`, which will be a string, and make a new `YTSearch` request
     * When we get a response, it will update the `state` with the new list of videos
+
+### Throttling Search Term
+
+* To fix the lag and the behavior of video list updating with every character input, we're going to use a library called `lodash`
+  * Within `lodash`, we're going to use a *utility method* called `debounce()`
+    * `debounce()` can be used to *throttle* how often a function is called
+
+```
+$ npm install --save lodash
+```
