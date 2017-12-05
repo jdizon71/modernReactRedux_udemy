@@ -400,3 +400,30 @@ $ npm install --save lodash
     * Both `App` and `SearchBar` both had their own, separate `state`
     * When we start working with Redux, we will be working with *application-level state*
 * Using callbacks to manipulate data
+
+## Modeling Application State
+### Foreword on Redux
+
+* **Redux** is not the only techology that we'll be using
+  * There's also **Webpack**, **Redux Router**, **React Router**, **Redux Promise**, **Redux Thunk**, **Hot Reloadiing**, etc.
+
+### What is Redux?
+### More on Redux
+### Even More on Redux!
+
+* Redux is a predictable, *state* container for JavaScript applications
+* Redux deals with the data of the application
+  * It is a collection of all the data that describes the app
+  * Includes both *hard data* and *meta data*
+* React deals with the *views* of the application
+  * Translates data into something that can be displayed on the screen as something that the user can interact with
+
+* The difference with creating a React/Redux application is that we *centralize* all the application's data inside of a single object
+  * With other JavaScript libraries, you have separate collections of data
+  * Redux keeps all the application's data within a single object, known as the *state*
+    * The *state*, in regards to Redux, is *application-level state*
+
+* One of the most important things when creating a Redux application is how to design your *state*
+* To reiterate, all the data that describes the application is contained within a single JavaScript object
+  * It is maintained by Redux
+  * Referred to as the application state
