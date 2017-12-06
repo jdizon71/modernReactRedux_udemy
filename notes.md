@@ -427,3 +427,19 @@ $ npm install --save lodash
 * To reiterate, all the data that describes the application is contained within a single JavaScript object
   * It is maintained by Redux
   * Referred to as the application state
+
+### Reducers
+
+* A **reducer** is function that returns a piece of the application state
+* Because our application can have many different pieces of state, we can also have many different reducers
+  * Our bookList application will have two pieces of `state`: a `books` and the currently `activeBook`
+    * We will also have two different reducers, `booksReducer` and `activeBook reducer`, for each piece of `state`
+    * Also note; our application state will be a plain JavaScript object
+    * You can think of reducers as producing the value of the application's state
+
+* When creating file structure for redux apps, it's helpful to *prepend* file names with the *type of file* it is
+* To make use of reducers, we need to make sure to `export` the reducer so other files can have access to it
+
+* A reducer is created using a two-step process:
+  1. Create the reducer
+  2. Wire the reducer into the application
