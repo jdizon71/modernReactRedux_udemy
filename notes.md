@@ -432,7 +432,7 @@ $ npm install --save lodash
 
 * A **reducer** is function that returns a piece of the application state
 * Because our application can have many different pieces of state, we can also have many different reducers
-  * Our bookList application will have two pieces of `state`: a `books` and the currently `activeBook`
+  * Our bookList application will have two pieces of `state`: a `books ` and the currently `activeBook`
     * We will also have two different reducers, `booksReducer` and `activeBook reducer`, for each piece of `state`
     * Also note; our application state will be a plain JavaScript object
     * You can think of reducers as producing the value of the application's state
@@ -443,3 +443,32 @@ $ npm install --save lodash
 * A reducer is created using a two-step process:
   1. Create the reducer
   2. Wire the reducer into the application
+
+### Containers - Connecting Redux to React
+
+* To connect Redux with React , you use a different library called `react-redux`
+  * To make use of the library, we're going to change one of our components to be a `container`
+    * A `container` is a React component that has a *direct connection to the state managed by Redux*
+      * Containers can also be referred to as *smart components*
+
+### Containers Continued
+
+* In general, we want the most parent component that cares about a particular piece of state to be a container
+  * Looking at the structure of our app, we can make the case that `books` and `activeBook` should both be containers since they both would need data from Redux to populate
+
+* In general, we only want to create containers out of components that care about a *particular* piece of state
+* Also, only the *most-parent* component that uses a particular piece of state needs to be connected to redux
+
+### Implementation of a Container Class
+
+* To connect React and Redux, we need to use the `react-redux` library
+* Whenever we connect a component and Redux, the component becomes a *container*, or a *smart component*
+
+* `connect` is a function that takes a function and a component and produces a container
+  * The container is aware of the `state` that is contained within Redux
+* `mapStateToProps()` is important because it takes the `state` as an argument and returns an object
+  * The object that is returned is available to our component as `this.props`
+  * This function is the glue between React and Redux
+
+* Whenever our application's state changes, the container will instantly re-render with a new list of books
+* Whenever the application state changes, the object in the state function will be assigned as props to the component
