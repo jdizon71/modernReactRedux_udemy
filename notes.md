@@ -560,3 +560,31 @@ $ npm install --save lodash
         * `book: state.activeBook`
           * `state.activeBook` is being referenced from the `ActiveBook` reducer that is creating that piece of state
   * Lastly, we `export` the `BookDetail` container
+
+### Reducers and Actions Review
+
+* Redux is in charge of managing application state
+* Application state is a single, JS object
+* Application state is completely different and separate from component state
+  * *THEY HAVE NO CONNECT WHATSOEVER*
+* Application state is formed by *reducers*
+* All *reducers* get tied together by the `combineReducers()`
+* Each *key* within the object returned by `combineReducers()`, we assign one reducer which is responsible for creating that particular piece of state
+  * That piece of state refers to the corresponding piece within the application state
+* Reducers are in charge of changing the application state over time
+* The way reducers do this is by using *actions*
+* Whenever an action is *dispatched*, it flows through all the different reducers of the application
+* Each reducer has the option to return a different piece of state based on the `type` of action that it received
+* *Action creators* are simple functions that return an action
+* An *action* is a plain JS object
+* Actions MUST have a `type` defined, but they can OPTIONALLY have a `payload` or any properties
+  * `payload` is only convention, but not requirement
+
+* Our application flow:
+  * We tied an *action creator* to each `book` list item
+  * When a user clicks on a `book` list item, it called the action creator which `dispatch`es an *action*
+  * That action automatically gets sent to all *reducers*
+  * The reducer, `ActiveBook`, that cares about that particular action returns a new piece of state, `activeBook`
+  * That new piece of state gets assembled into the application state
+  * The application state then gets injected into all the different containers
+  * The containers re-render the views with the updated piece of state
